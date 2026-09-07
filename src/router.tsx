@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Shop from './pages/Shop';
+import About from './pages/About';
 import ProductDetail from './pages/ProductDetail';
 
 import CartPage from './pages/CartPage';
@@ -10,6 +11,7 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Shop />} />
+      <Route path="/about" element={<About />} />
       <Route path="/product/:productSlug" element={<ProductDetail />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<Checkout />} />
