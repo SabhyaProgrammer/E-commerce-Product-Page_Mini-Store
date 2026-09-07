@@ -1,0 +1,6 @@
+{
+  "name": "Foundry Goods",
+  "description": "Portfolio e-commerce demo for Foundry Goods home goods.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

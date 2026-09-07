@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+}
+
+.container {
+  @apply max-w-[1400px] mx-auto px-[4vw];
+}
+
+.glass {
+  @apply bg-bg/80 backdrop-blur-md;
+}
+
+::selection {
+  @apply bg-accent text-bg;
+}
