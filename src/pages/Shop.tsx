@@ -8,6 +8,7 @@ import TrustStrip from '../components/TrustStrip';
 import QuickViewModal from '../components/QuickViewModal';
 import PageTransition from '../components/PageTransition';
 import { productsData, Product } from '../data/productsData';
+import { motion } from 'framer-motion';
 
 const Shop = () => {
   const [category, setCategory] = useState('All');
@@ -46,6 +47,22 @@ const Shop = () => {
         {quickViewProduct && <QuickViewModal product={quickViewProduct} onClose={() => setQuickViewProduct(null)} />}
       </div>
     </PageTransition>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-bg text-ink container"
+    >
+      <Navbar />
+      <main className="flex-grow pt-24">
+        <HeroBanner />
+        <FilterSortBar onCategoryChange={setCategory} onSortChange={setSort} />
+        <ProductGrid products={filteredProducts} loading={loading} onQuickView={setQuickViewProduct} />
+        <TrustStrip />
+      </main>
+      <Footer />
+      {quickViewProduct && <QuickViewModal product={quickViewProduct} onClose={() => setQuickViewProduct(null)} />}
+    </motion.div>
   );
 };
 

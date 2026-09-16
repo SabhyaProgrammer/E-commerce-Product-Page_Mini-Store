@@ -30,6 +30,9 @@ const Navbar = () => {
         transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isScrolled ? 'py-3 bg-bg/90 backdrop-blur-xl shadow-lg border-b border-ink/10' : 'py-6 bg-transparent'
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+          isScrolled ? 'py-4 bg-bg/95 backdrop-blur-md shadow-lg' : 'py-6 bg-transparent'
         } px-[4vw]`}
       >
         <div className="flex items-center justify-between max-w-[1400px] mx-auto">
@@ -45,11 +48,19 @@ const Navbar = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10">
+            className="font-sans font-extrabold text-3xl tracking-tighter hover:opacity-70 transition-opacity"
+          >
+            FOUNDRY.
+          </Link>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 className={`font-sans font-bold text-xs uppercase tracking-widest transition-all duration-300 relative group py-1 ${
+                className={`font-sans font-bold text-xs uppercase tracking-widest transition-all duration-300 relative group ${
                   location.pathname === link.to ? 'text-accent' : 'hover:text-accent'
                 }`}
               >
@@ -61,6 +72,9 @@ const Navbar = () => {
                   whileHover={{ width: '100%' }}
                   transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                 />
+                <span className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-300 ${
+                  location.pathname === link.to ? 'w-full' : 'w-0 group-hover:w-full'
+                }`} />
               </Link>
             ))}
           </div>
@@ -78,6 +92,11 @@ const Navbar = () => {
               >
                 <ShoppingBag size={20} className="group-hover:scale-110 transition-transform" />
               </motion.div>
+            <button 
+              onClick={() => setIsCartOpen(true)} 
+              className="relative font-sans font-bold text-xs uppercase tracking-widest hover:text-accent transition-colors group"
+            >
+              <ShoppingBag size={20} className="inline-block mr-2" />
               <span className="hidden lg:inline">Cart</span>
               <AnimatePresence>
                 {itemCount > 0 && (
@@ -86,6 +105,7 @@ const Navbar = () => {
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
                     className="absolute -top-2 -right-2 bg-accent text-bg text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md"
+                    className="absolute -top-2 -right-2 bg-accent text-bg text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold"
                   >
                     {itemCount}
                   </motion.span>
@@ -123,6 +143,15 @@ const Navbar = () => {
                 )}
               </AnimatePresence>
             </motion.button>
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button 
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </motion.nav>
@@ -157,6 +186,21 @@ const Navbar = () => {
                     {link.label}
                   </Link>
                 </motion.div>
+            transition={{ duration: 0.3 }}
+            className="fixed top-[73px] left-0 right-0 z-30 bg-bg border-b border-ink/20 md:hidden overflow-hidden"
+          >
+            <div className="flex flex-col py-6 px-[4vw] gap-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`font-sans font-bold text-sm uppercase tracking-widest py-2 ${
+                    location.pathname === link.to ? 'text-accent' : ''
+                  }`}
+                >
+                  {link.label}
+                </Link>
               ))}
             </div>
           </motion.div>

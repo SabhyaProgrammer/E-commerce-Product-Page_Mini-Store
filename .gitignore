@@ -10,6 +10,8 @@ out/
 
 # Logs
 *.log
+# Build artifacts
+dist/
 
 # Environment variables
 .env
@@ -23,6 +25,24 @@ out/
 *.swo
 
 # Python
+.env.*
+
+# IDE and editor settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
@@ -64,4 +84,28 @@ yarn-error.log*
 # OS generated files
 ehthumbs.db
 Icon?
+# Compression artifacts
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
 ```
