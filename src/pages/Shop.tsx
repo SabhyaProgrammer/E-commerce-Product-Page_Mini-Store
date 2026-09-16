@@ -6,6 +6,7 @@ import FilterSortBar from '../components/FilterSortBar';
 import ProductGrid from '../components/ProductGrid';
 import TrustStrip from '../components/TrustStrip';
 import QuickViewModal from '../components/QuickViewModal';
+import PageTransition from '../components/PageTransition';
 import { productsData, Product } from '../data/productsData';
 
 const Shop = () => {
@@ -32,17 +33,19 @@ const Shop = () => {
   }, [category, sort]);
 
   return (
-    <div className="min-h-screen bg-bg text-ink container">
-      <Navbar />
-      <main className="flex-grow">
-        <HeroBanner />
-        <FilterSortBar onCategoryChange={setCategory} onSortChange={setSort} />
-        <ProductGrid products={filteredProducts} loading={loading} onQuickView={setQuickViewProduct} />
-        <TrustStrip />
-      </main>
-      <Footer />
-      {quickViewProduct && <QuickViewModal product={quickViewProduct} onClose={() => setQuickViewProduct(null)} />}
-    </div>
+    <PageTransition>
+      <div className="min-h-screen bg-bg text-ink container">
+        <Navbar />
+        <main className="flex-grow pt-24">
+          <HeroBanner />
+          <FilterSortBar onCategoryChange={setCategory} onSortChange={setSort} />
+          <ProductGrid products={filteredProducts} loading={loading} onQuickView={setQuickViewProduct} />
+          <TrustStrip />
+        </main>
+        <Footer />
+        {quickViewProduct && <QuickViewModal product={quickViewProduct} onClose={() => setQuickViewProduct(null)} />}
+      </div>
+    </PageTransition>
   );
 };
 
