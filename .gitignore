@@ -2,12 +2,29 @@
 # Dependencies
 node_modules/
 
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Logs
+*.log
 # Build artifacts
 dist/
 
 # Environment variables
 .env
 .env.local
+*.env.*
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
 .env.*
 
 # IDE and editor settings
@@ -30,12 +47,43 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
+venv/
+.venv/
+.env
 
 # Coverage reports
 coverage/
 htmlcov/
 .coverage
 
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
+# Testing
+.nyc_output/
+coverage/
+
+# Package managers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+ehthumbs.db
+Icon?
 # Compression artifacts
 *.zip
 *.gz
